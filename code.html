@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网页重构编码规范</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        	font-family: microsoft yahei;
+            font-size: 16px;
+            color: #333;
+        }
+        a{
+        	color: #369;
+        	text-decoration: none;
+        }
+        a:link{
+        	color: #f00;
+        }
+        h1{
+            height: 200px;
+            line-height: 180px;
+            padding-left: 5%;
+            background: url(i/banner.jpg) no-repeat;
+            background-size: 100% auto; 
+            font-size: 46px;
+            color: #fff;
+            text-shadow: 0 0 10px #444;
+        }
+        .section{
+        	min-width: 990px;
+        	max-width: 1210px;
+            margin: 40px 100px;
+            line-height: 200%;
+        }
+        .section h2{
+            font-size: 20px;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .section li{
+        	margin-left: 19px;
+            padding: 0 0 8px 3px;
+            list-style-type: decimal;
+        }
+        .item h3{
+        	font-size: 16px;
+			font-weight: normal;
+        }
+        .con{
+        	padding: 8px 0 10px;
+        	line-height: 180%;
+        	font-size: 14px;
+        	color: #666;
+        }
+        .con p{
+        	margin-bottom: 8px;
+        }
+        .con p strong{
+        	color: #333;
+        }
+        pre{
+        	width: 500px;
+        	margin: 15px 0 13px;
+        	padding: 5px 20px;
+        	border: 1px solid #ddd;
+        	background: #F6F6F6;
+        	font-size: 12px;
+        	color: #777;
+        }
+        table,th,td{
+			border-collapse: collapse;
+        	border:1px solid #ddd;
+        	font-size: 14px;
+        }
+        table{
+        	width: 100%;
+        	margin: 15px 0 13px;
+        }
+        th{
+        	height: 50px;
+        	padding-left: 10px;
+        	font-weight: bold;
+        	color: #000;
+        	background: #f6f6f6;
+        }
+        td{
+        	height: 35px;
+			padding: 0 10px;
+        }
+        .col1{
+        	width: 10%;
+        	border-left: 2px solid #ccc;
+        }
+        .col2{
+        	width: 39%;
+        }
+        .col3{
+        	width: 23%;
+        }
+        .bdn{
+        	border: none;
+        }
+        .fontColor{
+        	color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>网页重构编码规范</h1>
+    <section class="section">
+        <h2>目的及意义</h2>
+        <ol>
+        	<li>提升团队编码的一致性，让代码可以更好的被组织，被规范，提升代码的易读性和可维护性，从而提升团队的工作效率，降低维护成本。</li>
+        	<li>让团队合作有统一的指导方向，培养好的编码习惯的，同时可以达到知识、技巧共享和学习的效果。</li>
+        </ol>
+    </section>
+    <section class="section">
+        <h2>一般规范</h2>
+        <ol>
+        	<li>
+        		<section class="item">
+        			<h3>代码注释</h3>
+        			<div class="con">
+        				<p>代码注释是非常重要的部分，合理的代码注释更加有利于团队合作和代码维护。需要被注释的总体分为三类：文件头注释、模块头注释及行注释</p>
+        				<div class="con-item">
+        					<p><strong>文件头注释：</strong>每个新生成的文件，需要添加一个文件头部的注释，最主要的写明谁在什么时间为什么创建：创建者, 创建日期, 文件描述等。例：</p>
+<pre>
+/* 
+* 创建者 : 郭迎 
+* 创建日期: 2018/03/16
+* 文件描述: 描述文件用途，适用范围及注意事项等。
+*/
+</pre>
+        				</div>
+        				<div class="con-item">
+        					<p><strong>模块头注释：</strong>每个模块，需要添加一个模块头注释，主要是描述清楚：模块名称，使用范围等 例：</p>
+<pre>
+/* 
+* 模块名称: 搜索
+* 使用范围: 全站
+*/
+</pre>
+        				</div>
+        				<div class="con-item">
+        					<p><strong>行注释：</strong>为需要特殊注释的行添加。例：</p>
+<pre>
+/*此行代码为需求文档地址*/
+</pre>
+        				</div>
+        			</div>
+        		</section>
+    		</li>	
+    		<li>
+        		<section class="item">
+        			<h3>文件缩进</h3>
+        			<div class="con">
+        				<p>使用Tab进行代码缩进，建议设置Tab为4个空格的宽度</p>
+        				<p><img src="i/pic1.jpg" alt=""></p>
+    				</div>
+        		</section>
+    		</li>
+    		<li>
+        		<section class="item">
+        			<h3>编码原则</h3>
+        			<div class="con">
+        				<p>遵循结构、表现、行为相分离的理念，性能优化和可维护性相平衡，实用高于完美的原则</p>
+        			</div>
+        		</section>
+        	</li>
+        </ol>
+    </section>
+    <section class="section">
+    	<h2>HTML</h2>
+    	<ol>
+    		<li>
+    			<section class="item">
+    				<h3>HTML书写</h3>
+    				<div class="con">
+						<div class="con-item">
+        					<p><strong>DOCTYPE：</strong>推荐使用 HTML5 的文档类型申明。例：</p>
+        					<p><img src="i/pic2.jpg" alt=""></p>
+        				</div>
+
+						<div class="con-item">
+        					<p><strong>标签语义化：</strong>尽量遵循HTML标准和语义，良好的HTML文档结构不仅更利于维护，还能够提升页面的可访问性，标准化的代码也有利于SEO。常用的标签见下表：</p>
+        					<table>
+        						<colgroup>
+        							<col class="col1 bdn">
+        							<col class="col2">
+        							<col class="col1">
+        							<col class="col2">
+        						</colgroup>
+        						<thead>
+	        						<tr>
+	        							<th>标签</th>
+	        							<th>标签语意</th>
+	        							<th>标签</th>
+	        							<th>语意</th>
+	        						</tr>
+	        					</thead>
+	        					<tbody>
+	        						<tr>
+	        							<td>div</td>
+	        							<td class="fontColor">块级通用容器</td>
+	        							<td>span</td>
+	        							<td class="fontColor">定义被用来组合文档中的行内元素，没有实际意义，通常用于控制行内元素的样式</td>
+	        						</tr>
+	        						<tr>
+	        							<td>h1-h6</td>
+	        							<td class="fontColor"> 定义标题，h1定义最大的标题，h6定义最小的标题</td>
+	        							<td>a</td>
+	        							<td class="fontColor">定义超链接，用于从一个页面链接到另一个页面</td>
+	        						</tr>
+	        						<tr>
+	        							<td>header</td>
+	        							<td class="fontColor">定义文档的页眉，通常作为页面头部区域容器使用</td>
+	        							<td>button</td>
+	        							<td class="fontColor">定义按钮</td>
+	        						</tr>
+	        						<tr>
+	        							<td>nav</td>
+	        							<td class="fontColor">定义导航链接的部分，通常用于页面导航区域的容器使用</td>
+	        							<td>del</td>
+	        							<td class="fontColor">定义被删除文本</td>
+	        						</tr>
+	        						<tr>
+	        							<td>section</td>
+	        							<td class="fontColor">定义文档中的节（section、区段）。通常作为页面模块的容器使用</td>
+	        							<td>sub, sup</td>
+	        							<td class="fontColor">sub定义下标文本,sup定义上标文本</td>
+	        						</tr>
+	        						<tr>
+	        							<td>aside</td>
+	        							<td class="fontColor">定义其所处内容之外的内容。通常作为页面侧边栏的容器使用</td>
+	        							<td>strong, em</td>
+	        							<td class="fontColor">strong和em皆定义强调文本，区别在于em表示局部内容强调，strong表示全局强调，strong的强调程度要比em更强烈</td>
+	        						</tr>
+	        						<tr>
+	        							<td>ul, ol, li</td>
+	        							<td class="fontColor">ul和ol均皆定义列表，ul定义无序列表，ol，定义有序列表，li定义列表项目</td>
+	        							<td>b, i</td>
+	        							<td class="fontColor">b定义粗体，i定义斜体</td>
+	        						</tr>
+	        						<tr>
+	        							<td>dl, dt, dd</td>
+	        							<td class="fontColor">dl定义定义列表（definition list），dt定义定义列表中的项目，dd定义定义列表中项目的描述</td>
+	        							<td>img</td>
+	        							<td class="fontColor">定义图像</td>
+	        						</tr>
+	        						<tr>
+	        							<td>p</td>
+	        							<td class="fontColor">定义段落</td>
+	        							<td>label</td>
+	        							<td class="fontColor">定义input元素的标注</td>
+	        						</tr>
+	        						<tr>
+	        							<td>table, thead, <br/>tbody, tfoot, <br/>th, tr, td, <br/>colgroup, col</td>
+	        							<td class="fontColor">table定义表格，thead定义表格中的表头内容，tbody定义表格中的主体内容，tfoot定义表格中的表注内容（脚注），th定义表格中的表头单元格，tr定义表格中的行，定义表格中的单元，colgroup定义表格中供格式化的列组，col定义表格中一个或多个列的属性值</td>
+	        							<td>input</td>
+	        							<td class="fontColor">定义输入控件</td>
+	        						</tr>
+	        						<tr>
+	        							<td>footer</td>
+	        							<td class="fontColor">定义文档或节的页脚，通常作为页面尾部区域容器使用</td>
+	        							<td>textarea</td>
+	        							<td class="fontColor">定义多行的文本输入控件</td>
+	        						</tr>
+	        					</tbody>
+        					</table>
+        					<p>更多标签详细说明可以查看 <a href="http://www.w3school.com.cn/tags/" target="_blank">W3Cschool的参考手册</a> 。</p>
+        				</div>
+						<div class="con-item">
+        					<p><strong>其他细节：</strong></p>
+        					<p>· 尽可能避免多余而没有语意结构元素 </p>
+        					<p>· 标签名、属性值及属性名统一都使用小写字母。例：</p>
+        					<p><img src="i/pic3.jpg" alt=""></p>
+        					<p>· 在可维护性不受影响情况下，尽可能不把内联标签换行，避免产生文本节点而造成的视觉空隙</p>
+        				</div>
+        			</div>
+    			</section>
+    		</li>
+    		<li>
+    			<section class="item">
+    				<h3>HTML验证</h3>
+    				<div class="con">
+        				<p>条件允许的情况下，建议使用 <a href="http://validator.w3.org" target="_blank">W3C HTML validator</a> 进行HTML代码的标准规范验证。一方面可以保证html编码的合法性，另一方面也可以提升对基础知识的了解。</p>
+        			</div>
+    			</section>
+    		</li>
+    	</ol>
+    </section>
+    <section class="section">
+        <h2>CSS</h2>    
+        <ol>
+        	<li>
+        		<section class="item">
+        			<h3>CSS命名</h3>
+        			<div class="con">
+        				<p>· 参考BEM的命名规范，BEM代表 “模块（block）,元素（element）,修饰符（modifier）。block使用驼峰式命名，element与block使用下划线“_”连接，modifier与element之间使用中划线“-”连接。详细说明如下：</p>
+<pre>
+_下划线：下划线用来连接块和块的子元素
+-中划线：中划线用来描述一个块或者块的子元素的一种状态
+thisBlock_element-modifier
+</pre>
+        				<p>· CSS名称用描述内容或结构的英文关键词来命名，不使用表现的名词命名，英文单词尽可能不缩写，也不要使用汉语拼音。例：</p>
+        				<p><img src="i/pic4.jpg" alt=""></p>
+        				<p>· 常用的CSS命名如下表：</p>
+        				<table>
+    						<colgroup>
+    							<col class="col1 bdn">
+    							<col class="col3">
+    							<col class="col1">
+    							<col class="col3">
+    							<col class="col1">
+    							<col class="col3">
+    						</colgroup>
+    						<thead>
+        						<tr>
+        							<th>模块</th>
+        							<th>命名</th>
+        							<th>模块</th>
+        							<th>命名</th>
+        							<th>模块</th>
+        							<th>命名</th>
+        						</tr>
+        					</thead>
+        					<tbody>
+        						<tr>
+        							<td>头部</td>
+        							<td class="fontColor">header</td>
+        							<td>内容</td>
+        							<td class="fontColor">container</td>
+        							<td>尾部</td>
+        							<td class="fontColor">footer</td>
+        						</tr>
+        						<tr>
+        							<td>导航</td>
+        							<td class="fontColor">nav</td>
+        							<td>菜单</td>
+        							<td class="fontColor">menu</td>
+        							<td>子导航/子菜单</td>
+        							<td class="fontColor">subnav/submenu</td>
+        						</tr>
+        						<tr>
+        							<td>外围容器</td>
+        							<td class="fontColor">wrapper</td>
+        							<td>侧栏</td>
+        							<td class="fontColor">sidebar</td>
+        							<td>栏目/列</td>
+        							<td class="fontColor">column</td>
+        						</tr>
+        						<tr>
+        							<td>搜索</td>
+        							<td class="fontColor">search</td>
+        							<td>登录</td>
+        							<td class="fontColor">login</td>
+        							<td>注册</td>
+        							<td class="fontColor">register</td>
+        						</tr>
+        						<tr>
+        							<td>标题</td>
+        							<td class="fontColor">title</td>
+        							<td>内容</td>
+        							<td class="fontColor">content</td>
+        							<td>摘要</td>
+        							<td class="fontColor">summary</td>
+        						</tr>
+        						<tr>
+        							<td>标志</td>
+        							<td class="fontColor">logo</td>
+        							<td>标签页</td>
+        							<td class="fontColor">tab</td>
+        							<td>列表</td>
+        							<td class="fontColor">list</td>
+        						</tr>
+        						<tr>
+        							<td>广告</td>
+        							<td class="fontColor">banner</td>
+        							<td>热点</td>
+        							<td class="fontColor">hot</td>
+        							<td>新闻</td>
+        							<td class="fontColor">news</td>
+        						</tr>
+        						<tr>
+        							<td>下载</td>
+        							<td class="fontColor">download</td>
+        							<td>友情链接</td>
+        							<td class="fontColor">friendlink</td>
+        							<td>滚动</td>
+        							<td class="fontColor">scroll</td>
+        						</tr>
+        						<tr>
+        							<td>服务</td>
+        							<td class="fontColor">service</td>
+        							<td>投票</td>
+        							<td class="fontColor">vote</td>
+        							<td>版权</td>
+        							<td class="fontColor">copyright</td>
+        						</tr>
+        						<tr>
+        							<td>小技巧</td>
+        							<td class="fontColor">tips</td>
+        							<td>提示信息</td>
+        							<td class="fontColor">msg</td>
+        							<td>指南</td>
+        							<td class="fontColor">guide</td>
+        						</tr>
+        						<tr>
+        							<td>当前态</td>
+        							<td class="fontColor">current</td>
+        							<td>注释</td>
+        							<td class="fontColor">note</td>
+        							<td>图标</td>
+        							<td class="fontColor">icon</td>
+        						</tr>
+        						
+        					</tbody>
+    					</table>
+        			</div>
+        		</section>
+        	</li>
+        	<li>
+				<section class="item">
+					<h3>CSS书写</h3>
+					<div class="con">
+						
+					</div>
+				</section>
+
+        	</li>
+        </ol>
+
+
+        2、顺序：这是一个选择器内书写CSS属性顺序的大致轮廓。这是为了保证更好的可读性和可扫描重要。
+        <a href="http://jigsaw.w3.org/css-validator/">css校验</a>
+
+作为最佳实践，我们应该遵循以下顺序（应该按照下表的顺序）：
+
+结构性属性：
+display
+position, left, top, right etc.
+overflow, float, clear etc.
+margin, padding
+表现性属性：
+background, border etc.
+font, text      
+3：格式：单行书写
+4、书写：0不需要单位；小于1的可以省略小数点前面的0
+
+
+不要使用 @import
+    </section>
+    <section class="section">
+        <h2>HTML标签使用</h2>           
+    </section>
+    bem的优点：你可以让 CSS 的优先级保持相对扁平；你能立即知道哪些东西是一个子元素
+    BEM的命名规矩很容易记：block-name__element-name--modifier-name，也就是模块名 + 元素名 + 修饰器名。
+    首先，有悖BEM命名规范，BEM的命名中只包含三个部分，元素名只占其中一部分，所以不能出现多个元素名的情况，所以上述每一页的按钮名可以改成：page-btn__btn。
+    js操作时js-active
+    组件命名以m-开始
+</body>
+</html>
